@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   // be sure to include its associated Product data
   Tag.findAll({
     include: [Product]
-    })
+  })
     .then((tags) => res.json(tags))
     .catch((err) => {
       console.log(err);
@@ -24,26 +24,26 @@ router.get('/:id', (req, res) => {
       id: req.params.id
     },
     include: [Product]
-    })
+  })
     .then((tag) => res.json(tag))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
-    console.log(req.body);
+  console.log(req.body);
 });
 
 router.post('/', (req, res) => {
   // create a new tag
   Tag.create({
     tag_name: req.body.tag_name
-    })
+  })
     .then((tag) => res.status(200).json(tag))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
-    console.log(req.body);
+  console.log(req.body);
 });
 
 router.put('/:id', (req, res) => {
@@ -57,13 +57,13 @@ router.put('/:id', (req, res) => {
         id: req.params.id
       }
     }
-    )
+  )
     .then((tag) => res.status(200).json(tag))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
-    console.log(req.body);
+  console.log(req.body);
 });
 
 router.delete('/:id', (req, res) => {
@@ -72,13 +72,14 @@ router.delete('/:id', (req, res) => {
     where: {
       id: req.params.id
     }
-    })
+  })
     .then((tag) => res.status(200).json(tag))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
-    console.log(req.body);
+  console.log(req.body);
+  
 });
 
 module.exports = router;
